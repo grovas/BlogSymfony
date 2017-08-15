@@ -1,3 +1,38 @@
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
+home_index:
+    path: /
+    defaults: { _controller: AppBundle:Home:index }
+
+default_admin:
+    path: /admin
+    defaults: { _controller: AppBundle:Default:admin }
+
+register_index:
+    path: /register/index
+    defaults: { _controller: AppBundle:Register:index }
+
+user_success:
+    path: /user/success
+    defaults: { _controller: AppBundle:User:index }
+
+user_registration:
+    path: /register
+    defaults: { _controller: AppBundle:Registration:register }
+
+login:
+    path: /login
+    defaults: { _controller: AppBundle:Security:login }
+
+activeuser_checktoken:
+    path: /register/activate={token}
+    #path: /register/activate
+    defaults: { _controller: AppBundle:ActivateUser:checkToken }
+    requirements:
+       #token: '/^[0-9A-F]{40}$/i'
+    methods: GET
+
+logout:
+    path: /logout
