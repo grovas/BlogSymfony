@@ -4,7 +4,6 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\User as AppUser;
-//use AppBundle\Security\User as AppUser;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -16,6 +15,7 @@ class LoginController extends Controller
 	{
 		$user = new AppUser();
 		$em = $this->getDoctrine()->getManager();
+		var_dump("user_dump".$user);
 
 		$form = $this->createFormBuilder($user)
 			->add('username', TextType::class)

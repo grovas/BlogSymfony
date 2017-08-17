@@ -1,13 +1,18 @@
 AppBundle\Entity\User:
     type: entity
-    table: app_users
+    table: blog_users
     repositoryClass: AppBundle\Repository\UserRepository
     id:
         id:
             type: integer
             id: true
+#            column: user_id
             generator:
                 strategy: AUTO
+    oneToMany:
+        posts:
+            targetEntity: AppBundle\Entity\Post
+            mappedBy: user
     fields:
         username:
             type: string

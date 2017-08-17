@@ -14,8 +14,9 @@ class ActivateUserController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$user = $em->getRepository(User::class)->findOneByToken($token);
 
-		print_r($user);
-		$log->debug('user', $user);
+//		print_r($user);
+//		$log->debug('user', $user);
+		$log->debug('user-debug', array($user));
 
 		if ($user){
 			$user->setIsActive(true);

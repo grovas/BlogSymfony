@@ -241,38 +241,4 @@ class User implements UserInterface, \Serializable
 	{
 		$this->phone = $phone;
 	}
-
-    /**
-     * Get isActive
-     *
-     * @return boolean
-     */
-    public function getIsActive()
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * Add post
-     *
-     * @param \AppBundle\Entity\Post $post
-     *
-     * @return User
-     */
-    public function addPost(\AppBundle\Entity\Post $post)
-    {
-        $this->posts[] = $post;
-
-        return $this;
-    }
-
-    /**
-     * Remove post
-     *
-     * @param \AppBundle\Entity\Post $post
-     */
-    public function removePost(\AppBundle\Entity\Post $post)
-    {
-        $this->posts->removeElement($post);
-    }
 }

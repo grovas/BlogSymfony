@@ -1,0 +1,30 @@
+AppBundle\Entity\Post:
+    type: entity
+    table: blog_posts
+    repositoryClass: AppBundle\Repository\PostRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        blog_users:
+            targetEntity: AppBundle\Entity\User
+            inversedBy: posts
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+    fields:
+        title:
+            type: string
+            length: 255
+            nullable: false
+        body:
+            type: string
+            length: 512
+            nullable: false
+        date:
+            type: datetime
+            nullable: false
+    lifecycleCallbacks: {  }
