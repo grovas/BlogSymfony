@@ -40,7 +40,7 @@ class LoginController extends Controller
 			$em->persist($user);
 			$em->flush();
 
-			return $this->redirectToRoute('/');
+			return $this->redirectToRoute('/personal/index');
 		}
 
 		return $this->render('login/login_form.html.twig',

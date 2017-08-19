@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\User;
 use DateTime;
 
 class Post
@@ -26,7 +27,15 @@ class Post
 	 */
 	private $body;
 
+	/**
+	 * @var User
+	 */
 	private $user;
+
+	public function __construct()
+	{
+		$this->setDate(new \DateTime());
+	}
 
 	/**
 	 * @return mixed
@@ -45,20 +54,28 @@ class Post
 	}
 
 	/**
-	 * @return int
-	 */
-	public function getPostId(): int
-	{
-		return $this->id;
-	}
-
-	/**
 	 * @param int $id
 	 */
-	public function setPostId(int $id)
+	public function setId(int $id)
 	{
 		$this->id = $id;
 	}
+
+//	/**
+//	 * @return int
+//	 */
+//	public function getPostId(): int
+//	{
+//		return $this->id;
+//	}
+//
+//	/**
+//	 * @param int $id
+//	 */
+//	public function setPostId(int $id)
+//	{
+//		$this->id = $id;
+//	}
 
 	/**
 	 * @return datetime
@@ -108,7 +125,7 @@ class Post
 		$this->body = $body;
 	}
     /**
-     * @var \AppBundle\Entity\User
+     * @var User
      */
     private $blog_users;
 
@@ -150,11 +167,11 @@ class Post
     /**
      * Set blogUsers
      *
-     * @param \AppBundle\Entity\User $blogUsers
+     * @param User $blogUsers
      *
      * @return Post
      */
-    public function setBlogUsers(\AppBundle\Entity\User $blogUsers = null)
+    public function setBlogUsers(User $blogUsers = null)
     {
         $this->blog_users = $blogUsers;
 
@@ -164,10 +181,22 @@ class Post
     /**
      * Get blogUsers
      *
-     * @return \AppBundle\Entity\User
+     * @return User
      */
     public function getBlogUsers()
     {
         return $this->blog_users;
     }
+
+	public function __toString()
+	{
+		return $this->getId() ? (string)$this->getTitle() : '-';
+	}
+
+	public function __call($name, $arguments)
+	{
+		// TODO: Implement __call() method.
+	}
+
+
 }

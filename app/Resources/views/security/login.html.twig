@@ -9,13 +9,17 @@
 	{% endif %}
 
 	<form action="{{ path('login') }}" method="post">
-		<label for="username">Username:</label>
-		<input type="text" id="username" name="_username" value="{{ last_username }}" />
-
-		<label for="password">Password:</label>
-		<input type="password" id="password" name="_password" />
-
-		<button type="submit">login</button>
+		<div>
+			<label for="username">Username:</label>
+			<input type="text" id="username" name="_username"
+				   svalue="{{ last_username }}" />
+		</div>
+		<div>
+			<label for="password">Password:</label>
+			<input type="password" id="password" name="_password" />
+		</div>
+		<input type="hidden" name="_target_path" value="/personal/index">
+		<input type="submit" name="login" />
 	</form>
 
 {% endblock %}

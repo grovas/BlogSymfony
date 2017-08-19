@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Numer </th>
+				<th>Data utworzenia </th>
+				<th>Tytuł </th>
+				<th>Post</th>
+				<th>User</th>
+			</tr>
+			{#{{ dump(posts.getId()) }}#}
+			{{ dump(user.getUsername) }}
+			{{ dump(posts) }}
+			{#{{ dump(posts.getPostsId) }}#}
+			{#{{ dump(post.getDate()) }}#}
+			{#{{ dump(post.getTitle()) }}#}
+			{#{{ dump(post.getBody()) }}#}
+			{% for post in posts %}
+				<tr>
+					<td>
+						{{ post.id }}
+					</td>
+					<td>
+						{{ post.date|date('Y-m-d') }}
+					</td>
+					<td>
+						{{ post.title }}
+					</td>
+					<td>
+						{{ post.body }}
+					</td>
+					<td>
+						{{ user.getUsername }}
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

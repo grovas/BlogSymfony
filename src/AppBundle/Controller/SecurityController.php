@@ -3,12 +3,12 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
+//use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends Controller
 {
-    public function loginAction(Request $request, AuthenticationUtils $authUtils)
+    public function loginAction(AuthenticationUtils $authUtils)
     {
         $error = $authUtils->getLastAuthenticationError();
 
@@ -20,7 +20,7 @@ class SecurityController extends Controller
 		));
     }
 
-    public function loginCheckAction()
-	{
-	}
+//    public function loginCheckAction()
+//	{
+//	}
 }

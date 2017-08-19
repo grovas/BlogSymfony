@@ -10,9 +10,9 @@ default_admin:
     path: /admin
     defaults: { _controller: AppBundle:Default:admin }
 
-register_index:
-    path: /register/index
-    defaults: { _controller: AppBundle:Register:index }
+#register_index:
+#    path: /register/index
+#    defaults: { _controller: AppBundle:Register:index }
 
 user_success:
     path: /user/success
@@ -34,5 +34,8 @@ activeuser_checktoken:
        #token: '/^[0-9A-F]{40}$/i'
     methods: GET
 
+personal_index:
+    path: /personal/index
+    defaults: { _controller: AppBundle:Personal:index }
 logout:
     path: /logout

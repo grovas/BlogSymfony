@@ -2,10 +2,10 @@
 
 namespace AppBundle\Entity;
 
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
-class User implements UserInterface, \Serializable
+class User implements AdvancedUserInterface, \Serializable
 {
 	/**
 	 * @var int
@@ -52,6 +52,9 @@ class User implements UserInterface, \Serializable
 	 */
 	private $tstamp;
 
+	/**
+	 * @var Post
+	 */
 	private $posts;
 
 	/**
@@ -70,6 +73,7 @@ class User implements UserInterface, \Serializable
 			$this->id,
 			$this->username,
 			$this->password,
+			$this->isActive,
 		));
 	}
 
@@ -79,6 +83,7 @@ class User implements UserInterface, \Serializable
 			$this->id,
 			$this->username,
 			$this->password,
+			$this->isActive,
 			) = unserialize($serialized);
 	}
 
@@ -87,13 +92,13 @@ class User implements UserInterface, \Serializable
 	 */
 	public function getPosts(): ArrayCollection
 	{
-		return $this->posts;
+		return new ArrayCollection();
 	}
 
 	/**
 	 * @param ArrayCollection $posts
 	 */
-	public function setPosts(ArrayCollection $posts)
+	public function setPosts($posts)
 	{
 		$this->posts = $posts;
 	}
@@ -139,7 +144,7 @@ class User implements UserInterface, \Serializable
 	}
 
 	/**
-	 * @param int $id
+	 * @param int
 	 */
 	public function setId(int $id)
 	{
@@ -155,7 +160,7 @@ class User implements UserInterface, \Serializable
 	}
 
 	/**
-	 * @param string $email
+	 * @param string
 	 */
 	public function setEmail(string $email)
 	{
@@ -259,7 +264,7 @@ class User implements UserInterface, \Serializable
      *
      * @return User
      */
-    public function addPost(\AppBundle\Entity\Post $post)
+    public function addPost(Post $post)
     {
         $this->posts[] = $post;
 
@@ -271,8 +276,68 @@ class User implements UserInterface, \Serializable
      *
      * @param \AppBundle\Entity\Post $post
      */
-    public function removePost(\AppBundle\Entity\Post $post)
+    public function removePost(Post $post)
     {
         $this->posts->removeElement($post);
     }
+
+	/**
+	 * Checks whether the user's account has expired.
+	 *
+	 * Internally, if this method returns false, the authentication system
+	 * will throw an AccountExpiredException and prevent login.
+	 *
+	 * @return bool true if the user's account is non expired, false otherwise
+	 *
+	 * @see AccountExpiredException
+	 */
+	public function isAccountNonExpired()
+	{
+		return true;
+	}
+
+	/**
+	 * Checks whether the user is locked.
+	 *
+	 * Internally, if this method returns false, the authentication system
+	 * will throw a LockedException and prevent login.
+	 *
+	 * @return bool true if the user is not locked, false otherwise
+	 *
+	 * @see LockedException
+	 */
+	public function isAccountNonLocked()
+	{
+		return true;
+	}
+
+	/**
+	 * Checks whether the user's credentials (password) has expired.
+	 *
+	 * Internally, if this method returns false, the authentication system
+	 * will throw a CredentialsExpiredException and prevent login.
+	 *
+	 * @return bool true if the user's credentials are non expired, false otherwise
+	 *
+	 * @see CredentialsExpiredException
+	 */
+	public function isCredentialsNonExpired()
+	{
+		return true;
+	}
+
+	/**
+	 * Checks whether the user is enabled.
+	 *
+	 * Internally, if this method returns false, the authentication system
+	 * will throw a DisabledException and prevent login.
+	 *
+	 * @return bool true if the user is enabled, false otherwise
+	 *
+	 * @see DisabledException
+	 */
+	public function isEnabled()
+	{
+		return $this->isActive;
+	}
 }

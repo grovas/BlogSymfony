@@ -18,9 +18,11 @@ class RegistrationController extends Controller
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
 	 * @internal param Swift_Mailer $meiler
 	 */
-    public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder, \Swift_Mailer $mailer)
+    public function registerAction(Request $request,
+								   UserPasswordEncoderInterface $passwordEncoder,
+								   \Swift_Mailer $mailer)
     {
-		dump($request);
+		//dump($request);
     	$user = new User();
     	$form = $this->createForm(UserType::class, $user);
 

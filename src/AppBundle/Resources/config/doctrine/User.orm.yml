@@ -6,12 +6,11 @@ AppBundle\Entity\User:
         id:
             type: integer
             id: true
-#            column: user_id
             generator:
                 strategy: AUTO
     oneToMany:
         posts:
-            targetEntity: AppBundle\Entity\Post
+            targetEntity: Post
             mappedBy: user
     fields:
         username:

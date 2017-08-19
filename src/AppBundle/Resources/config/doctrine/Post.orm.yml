@@ -9,8 +9,8 @@ AppBundle\Entity\Post:
             generator:
                 strategy: AUTO
     manyToOne:
-        blog_users:
-            targetEntity: AppBundle\Entity\User
+        user:
+            targetEntity: User
             inversedBy: posts
             joinColumn:
                 name: user_id
@@ -21,8 +21,7 @@ AppBundle\Entity\Post:
             length: 255
             nullable: false
         body:
-            type: string
-            length: 512
+            type: text
             nullable: false
         date:
             type: datetime
