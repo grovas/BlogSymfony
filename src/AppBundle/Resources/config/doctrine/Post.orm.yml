@@ -26,4 +26,7 @@ AppBundle\Entity\Post:
         date:
             type: datetime
             nullable: false
+        attachment:
+            type: string
+            nullable: true
     lifecycleCallbacks: {  }

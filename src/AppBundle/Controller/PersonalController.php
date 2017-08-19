@@ -33,7 +33,6 @@ class PersonalController extends Controller
 		if (!empty($user)) {
 			$user = $this->getDoctrine()
 				->getRepository(User::class)
-				//->findOneByIdJoinedToPost($user->getId());
 				->find($user->getId());
 
 			$posts = $this->getDoctrine()
@@ -41,20 +40,12 @@ class PersonalController extends Controller
 				->createQueryBuilder('p')
 				->select('p')
 				->where('p.user = :id')
-				//->join('p.user', 'user')
 				->setParameter('id', $user->getId())
 				->getQuery()
 				->getResult();
-				//->getOneOrNullResult();
-
-
-//			$posts = $this->getDoctrine()
-//				->getRepository(Post::class)
-//				->find(1);
-			//dump($posts);
 		}
 
-        return $this->render('personal/index.html.twig', //['posts' => $posts ]);
+        return $this->render('personal/index.html.twig',
 			array('user' => $user,
 				  'posts' => $posts,
 				 ));

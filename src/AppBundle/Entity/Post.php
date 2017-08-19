@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Entity\User;
 use DateTime;
 
 class Post
@@ -26,6 +25,11 @@ class Post
 	 * @var string
 	 */
 	private $body;
+
+	/**
+	 * @var string
+	 */
+	private $attachment;
 
 	/**
 	 * @var User
@@ -60,22 +64,6 @@ class Post
 	{
 		$this->id = $id;
 	}
-
-//	/**
-//	 * @return int
-//	 */
-//	public function getPostId(): int
-//	{
-//		return $this->id;
-//	}
-//
-//	/**
-//	 * @param int $id
-//	 */
-//	public function setPostId(int $id)
-//	{
-//		$this->id = $id;
-//	}
 
 	/**
 	 * @return datetime
@@ -124,11 +112,11 @@ class Post
 	{
 		$this->body = $body;
 	}
-    /**
-     * @var User
-     */
-    private $blog_users;
 
+//    /**
+//     * @var User
+//     */
+//    private $blog_users;
 
     /**
      * Get id
@@ -150,7 +138,6 @@ class Post
     public function setBody($body)
     {
         $this->body = $body;
-
         return $this;
     }
 
@@ -164,29 +151,48 @@ class Post
         return $this->body;
     }
 
-    /**
-     * Set blogUsers
-     *
-     * @param User $blogUsers
-     *
-     * @return Post
-     */
-    public function setBlogUsers(User $blogUsers = null)
-    {
-        $this->blog_users = $blogUsers;
+	/**
+	 * @return string
+	 */
+	public function getAttachment(): string
+	{
+		return $this->attachment;
+	}
 
-        return $this;
-    }
+	/**
+	 * @param $attachment
+	 * @return $this
+	 */
+	public function setAttachment($attachment)
+	{
+		$this->attachment = $attachment;
+		return $this;
+	}
 
-    /**
-     * Get blogUsers
-     *
-     * @return User
-     */
-    public function getBlogUsers()
-    {
-        return $this->blog_users;
-    }
+
+
+//    /**
+//     * Set blogUsers
+//     *
+//     * @param User $blogUsers
+//     *
+//     * @return Post
+//     */
+//    public function setBlogUsers(User $blogUsers = null)
+//    {
+//        $this->blog_users = $blogUsers;
+//        return $this;
+//    }
+//
+//    /**
+//     * Get blogUsers
+//     *
+//     * @return User
+//     */
+//    public function getBlogUsers()
+//    {
+//        return $this->blog_users;
+//    }
 
 	public function __toString()
 	{

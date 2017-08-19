@@ -37,5 +37,10 @@ activeuser_checktoken:
 personal_index:
     path: /personal/index
     defaults: { _controller: AppBundle:Personal:index }
+
+newpost_index:
+    path: /post/new
+    defaults: { _controller: AppBundle:NewPost:index }
+
 logout:
     path: /logout
