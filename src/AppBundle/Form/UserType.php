@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\User;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -19,7 +20,7 @@ class UserType extends AbstractType
 			->add('username', TextType::class)
 			->add('email', EmailType::class)
 			// TODO: Zmienić phone na number z walidacją
-			->add('phone', TextType::class)
+			->add('phone', NumberType::class)
 			->add('password', RepeatedType::class, array(
 				'type' => PasswordType::class,
 				'first_options' => array('label' => 'Password'),
@@ -30,7 +31,8 @@ class UserType extends AbstractType
 	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
-			'data_class' => User::class,
-		));
+			array(
+				'data_class' => User::class,
+		)));
 	}
 }

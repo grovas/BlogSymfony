@@ -46,7 +46,7 @@ class HomeController extends Controller
 			$userAdmin->setIsActive(true);
 			$userAdmin->setEmail('admin@admin.on');
 			$userAdmin->setUsername('admin');
-			$userAdmin->setPhone('112 112 121');
+			$userAdmin->setPhone('112112121');
 			$userAdmin->setToken(sha1(uniqid($userAdmin
 				->getUsername(), true)));
 			$userAdmin->setTstamp(time()+(7*24*60*60));

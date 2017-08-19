@@ -1,0 +1,7 @@
+Appbundle\Entity\User:
+    properties:
+        phone:
+            - Regex:
+                pattern: '/^\d+{9}/'
+                match: false
+                message: Twój numer telefonu musi zawierać tylko cyfry - dokładnie 9 cyfr

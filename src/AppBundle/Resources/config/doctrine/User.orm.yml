@@ -28,8 +28,7 @@ AppBundle\Entity\User:
             nullable: false
             unique: true
         phone:
-            type: string
-            length: 12
+            type: integer
             nullable: false
         isActive:
             type: boolean

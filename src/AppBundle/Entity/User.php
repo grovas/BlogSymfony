@@ -28,7 +28,7 @@ class User implements AdvancedUserInterface, \Serializable
 	private $email;
 
 	/**
-	 * @var string
+	 * @var integer
 	 */
 	private $phone;
 
@@ -242,7 +242,7 @@ class User implements AdvancedUserInterface, \Serializable
 	/**
 	 * @param string $phone
 	 */
-	public function setPhone(string $phone)
+	public function setPhone($phone)
 	{
 		$this->phone = $phone;
 	}
