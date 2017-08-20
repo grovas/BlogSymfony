@@ -29,7 +29,8 @@ class HomeController extends Controller
     }
 
 	/**
-	 * Fuction check if user admin is created and if not - create acoount admin
+	 * Initialization admin account.
+	 * Fuction check if user admin is created and if not - create acoount admin.
 	 *
 	 * @param $password
 	 * @param User $userAdmin

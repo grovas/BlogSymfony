@@ -61,7 +61,6 @@ class RegistrationController extends Controller
 				);
 
 			$mailer->send($message);
-
     		return $this->redirectToRoute('user_success');
 		}
 
@@ -71,8 +70,8 @@ class RegistrationController extends Controller
 		);
     }
 
-    public function activateAction()
-	{
-
-	}
+//    public function activateAction()
+//	{
+//
+//	}
 }

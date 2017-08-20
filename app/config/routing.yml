@@ -38,9 +38,9 @@ personal_index:
     path: /personal/index
     defaults: { _controller: AppBundle:Personal:index }
 
-newpost_index:
+post_newpost_index:
     path: /post/new
-    defaults: { _controller: AppBundle:NewPost:index }
+    defaults: { _controller: AppBundle:PostController\NewPost:index }
 
 logout:
     path: /logout

@@ -84,17 +84,19 @@ class Post
 	/**
 	 * @return string
 	 */
-	public function getTitle(): string
+	public function getTitle()
 	{
 		return $this->title;
 	}
 
 	/**
 	 * @param string $title
+	 * @return $this
 	 */
 	public function setTitle(string $title)
 	{
 		$this->title = $title;
+		return $this;
 	}
 
 	/**
@@ -154,7 +156,7 @@ class Post
 	/**
 	 * @return string
 	 */
-	public function getAttachment(): string
+	public function getAttachment()
 	{
 		return $this->attachment;
 	}

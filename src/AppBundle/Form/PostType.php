@@ -4,7 +4,6 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Post;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType as TextTypeForm;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -22,4 +21,11 @@ class PostType extends AbstractType
 				array('label' => 'Dołącz plik do posta'));
 	}
 
+	public function configureOptions(OptionsResolver $resolver)
+	{
+		$resolver->setDefaults(array(
+			array(
+				'data_class' => Post::class,
+			)));
+	}
 }
