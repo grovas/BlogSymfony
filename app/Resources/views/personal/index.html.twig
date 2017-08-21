@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<a href="{{ path('newpost_index') }}">Nowy wpis</a>
+	<a href="{{ path('post_newpost_index') }}">Nowy wpis</a><br/>
+	<a href="{{ path('user_edit') }}">Edycja danych blogera</a><br/>
+
 {# TODO: dlaczego wyswietla nawias prawo skosny#}
 	<table class="table">
 		<tbody>
@@ -25,17 +27,32 @@
 						{{ post.date|date('Y-m-d') }}
 					</td>
 					<td>
+						<a href="{{ path('post_viewpost_index', {'id': post.id}) }}">
 						{{ post.title }}
+						</a>
 					</td>
 					<td>
 						{{ post.body }}
 					</td>
 					<td>
-						{{ post.attachment }}
+						<a href="{{ asset('uploads/attachments/' ~ post.attachment) }}">
+							{{ post.attaOriginName }}</a>
+						<a href="">Usuń załącznik</a>
 					</td>>
 					<td>
 						{{ user.getUsername }}
 					</td>
+					<td>
+						<a href="{{ path('post_editpost_index', {'id': post.id}) }}">
+							Edycja posta
+						</a>
+					</td>
+					<td>
+						<a href="{{ path('post_deletepost_index', {'id': post.id}) }}">
+							Usunięcie posta
+						</a>
+					</td>
+
 				</tr>
 			{% endfor %}
 		</tbody>

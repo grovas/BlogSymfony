@@ -32,6 +32,11 @@ class Post
 	private $attachment;
 
 	/**
+	 * @var string
+	 */
+	private $attaOriginName;
+
+	/**
 	 * @var User
 	 */
 	private $user;
@@ -171,30 +176,24 @@ class Post
 		return $this;
 	}
 
+	/**
+	 * @return string
+	 */
+	public function getAttaOriginName()
+	{
+		return $this->attaOriginName;
+	}
 
+	/**
+	 * @param string $attaOriginName
+	 * @return $this
+	 */
+	public function setAttaOriginName(string $attaOriginName)
+	{
+		$this->attaOriginName = $attaOriginName;
+		return $this;
+	}
 
-//    /**
-//     * Set blogUsers
-//     *
-//     * @param User $blogUsers
-//     *
-//     * @return Post
-//     */
-//    public function setBlogUsers(User $blogUsers = null)
-//    {
-//        $this->blog_users = $blogUsers;
-//        return $this;
-//    }
-//
-//    /**
-//     * Get blogUsers
-//     *
-//     * @return User
-//     */
-//    public function getBlogUsers()
-//    {
-//        return $this->blog_users;
-//    }
 
 	public function __toString()
 	{

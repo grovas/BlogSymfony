@@ -18,6 +18,10 @@ user_success:
     path: /user/success
     defaults: { _controller: AppBundle:User:index }
 
+user_edit:
+    path: /user/edit
+    defaults: { _controller: AppBundle:User:editUserData }
+
 user_registration:
     path: /register
     defaults: { _controller: AppBundle:Registration:register }
@@ -41,6 +45,24 @@ personal_index:
 post_newpost_index:
     path: /post/new
     defaults: { _controller: AppBundle:PostController\NewPost:index }
+
+post_editpost_index:
+    path: /post/edit/{id}
+    defaults: { _controller: AppBundle:PostController\EditPost:index }
+    requirements:
+        id: '\d+'
+
+post_viewpost_index:
+    path: /post/view/{id}
+    defaults: { _controller: AppBundle:PostController\ViewPost:index }
+    requirements:
+        id: '\d+'
+
+post_deletepost_index:
+    path: /post/delete/{id}
+    defaults: { _controller: AppBundle:PostController\DeletePost:index }
+    requirements:
+        id: '\d+'
 
 logout:
     path: /logout

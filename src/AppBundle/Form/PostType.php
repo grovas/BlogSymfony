@@ -15,8 +15,10 @@ class PostType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('title', TextTypeForm::class)
-			->add('body',TextareaType::class)
+			->add('title', TextTypeForm::class,
+				array('label' => 'Podaj tytuł posta'))
+			->add('body',TextareaType::class,
+				array('label' => 'Tutaj treść posta'))
 			->add('attachment',FileType::class,
 				array('label' => 'Dołącz plik do posta'));
 	}

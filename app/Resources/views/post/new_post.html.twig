@@ -3,9 +3,12 @@
 {% block body %}
 	<div class="pull-center">
 		{{ form_start(form) }}
-		{{ form_row(form.title, { attr: { class: 'form-control', placeholder: 'Nazwa wpisu' } }) }}
-		{{ form_row(form.body, { attr: { class: 'form-control', placeholder: 'Treść wpisu' } }) }}
-		{{ form_row(form.attachment, { attr: { class: 'form-control', placeholder: 'Dodaj załącznik' } }) }}
+		{{ form_row(form.title,
+			{ attr: { class: 'form-control', placeholder: 'Nazwa wpisu' } }) }}
+		{{ form_row(form.body,
+			{ attr: { class: 'form-control', placeholder: 'Treść wpisu' } }) }}
+		{{ form_row(form.attachment,
+			{ attr: { class: 'form-control', placeholder: 'Dodaj załącznik' } }) }}
 		<br>
 		<button type="submit" class="btn btn-default">Dodaj wpis</button>
 		{{ form_end(form) }}

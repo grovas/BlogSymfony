@@ -18,6 +18,7 @@ class NewPostController extends Controller
 		if ($form->isSubmitted() && $form->isValid()) {
 			$post = $form->getData();
 			$file = $post->getAttachment();
+			$post->setAttaOriginName($file->getClientOriginalName());
 			$filename = md5(uniqid()).'.'.$file->guessExtension();
 			$file->move(
 				$this->getParameter('attachment_directory'),

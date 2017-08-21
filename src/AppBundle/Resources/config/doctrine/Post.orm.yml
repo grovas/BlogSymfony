@@ -29,4 +29,7 @@ AppBundle\Entity\Post:
         attachment:
             type: string
             nullable: true
+        attaOriginName:
+            type: string
+            nullable: true
     lifecycleCallbacks: {  }
