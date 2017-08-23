@@ -1,8 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<a href="{{ path('post_newpost_index') }}">Nowy wpis</a><br/>
+	{{ dump(notToday) }}
+
+	{% if notToday == false %}
+		<a href="{{ path('post_newpost_index') }}">Nowy wpis</a><br/>
+	{% endif %}
+
 	<a href="{{ path('user_edit') }}">Edycja danych blogera</a><br/>
+	<a href="{{ path('logout') }}">Wyloguj</a><br/>
 
 {# TODO: dlaczego wyswietla nawias prawo skosny#}
 	<table class="table">

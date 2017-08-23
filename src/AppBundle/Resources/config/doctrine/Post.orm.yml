@@ -24,7 +24,7 @@ AppBundle\Entity\Post:
             type: text
             nullable: false
         date:
-            type: datetime
+            type: date
             nullable: false
         attachment:
             type: string

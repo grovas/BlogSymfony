@@ -2,9 +2,9 @@
 
 {% block body %}
 	<h1> Przeglądasz post o numerze {{ post.id }} </h1>
-	<h2>{{ post.title }}</h2>
-	<h3>{{ post.body }}</h3>
-	<h5>{{ post.attaOriginName }}</h5>
+	<h2>Tytuł posta: {{ post.title }}</h2>
+	<h3>Treść posta: {{ post.body }}</h3>
+	<h5>Załącznik: {{ post.attaOriginName }}</h5>
 	<div>
 	<a href="{{ path('post_editpost_index', {'id': post.id}) }}">
 		Edycja posta

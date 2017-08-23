@@ -73,7 +73,7 @@ class Post
 	/**
 	 * @return datetime
 	 */
-	public function getDate(): datetime
+	public function getDate(): \Datetime
 	{
 		return $this->date;
 	}
@@ -81,7 +81,7 @@ class Post
 	/**
 	 * @param datetime $date
 	 */
-	public function setDate(datetime $date)
+	public function setDate(\DateTime $date)
 	{
 		$this->date = $date;
 	}
