@@ -7,15 +7,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Psr\Log\LoggerInterface;
 
-class ActivateUserController extends Controller
+class ActivateUserByTokenController extends Controller
 {
     public function checkTokenAction($token, LoggerInterface $log)
     {
 		$em = $this->getDoctrine()->getManager();
 		$user = $em->getRepository(User::class)->findOneByToken($token);
 
-//		print_r($user);
-//		$log->debug('user', $user);
 		$log->debug('user-debug', array($user));
 
 		if ($user){

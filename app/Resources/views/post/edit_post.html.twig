@@ -1,6 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
+	<div class="pull-center">
+		<h1>Edycja wpisu</h1>
+		{{ form_start(form) }}
+		{{ form_row(form.title,
+		{ attr: { class: 'form-control', placeholder: 'Nazwa wpisu' } }) }}
+		{{ form_row(form.body,
+		{ attr: { class: 'form-control', placeholder: 'Treść wpisu' } }) }}
+		{{ form_row(form.attachment,
+		{ attr: { class: 'form-control', placeholder: 'Zmiana załącznik' } }) }}
+		<br>
+		<button type="submit" class="btn btn-default">Zakończ edycję wpisu</button>
+		{{ form_end(form) }}
+	</div>
 {% endblock %}
 

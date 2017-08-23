@@ -28,7 +28,8 @@ class RegistrationController extends Controller
 
     	$form->handleRequest($request);
     	if ($form->isSubmitted() && $form->isValid()) {
-
+			$this->addFlash('notice',
+				'Blogger zarejestrowany, wysłano meil potwierdzający');
     		$password = $passwordEncoder->encodePassword($user, $user->getPassword());
     		$user->setPassword($password);
 
@@ -53,7 +54,7 @@ class RegistrationController extends Controller
 				->setBody(
 					'<html>'.
 							'	<body>'.
-							'		Jak kurwa nie klikniesz w link to wpierdol <br>'.
+							'		Wymagane potwierdzenie rejestracji <br>'.
 							'		<a href="'. $uri . '">kliklnij w ten link</a>'.
 							'	</body>'.
 							'</html>',

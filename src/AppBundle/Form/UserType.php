@@ -19,7 +19,6 @@ class UserType extends AbstractType
 		$builder
 			->add('username', TextType::class)
 			->add('email', EmailType::class)
-			// TODO: Zmienić phone na number z walidacją
 			->add('phone', NumberType::class)
 			->add('password', RepeatedType::class, array(
 				'type' => PasswordType::class,

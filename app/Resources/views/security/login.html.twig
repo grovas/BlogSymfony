@@ -8,16 +8,38 @@
 		</div>
 	{% endif %}
 
+	{#{{ form_start(form) }}#}
+		{#{{ form_errors(form) }}#}
+
+		{#<div>#}
+			{#{{ form_label(form.username) }}#}
+			{#{{ form_errors(form.username) }}#}
+			{#{{ form_widget(form.username) }}#}
+		{#</div>#}
+
+		{#<div>#}
+			{#{{ form_label(form.password) }}#}
+			{#{{ form_errors(form.password) }}#}
+			{#{{ form_widget(form.password) }}#}
+		{#</div>#}
+
+	{#{{ form_end(form) }}#}
 	<form action="{{ path('login') }}" method="post">
 		<div>
-			<label for="username">Username:</label>
+			<label for="username">Blogger:</label>
 			<input type="text" id="username" name="_username"
-				   svalue="{{ last_username }}" />
+				   value="{{ last_username }}" />
 		</div>
+
 		<div>
 			<label for="password">Password:</label>
 			<input type="password" id="password" name="_password" />
 		</div>
+		{#<div>#}
+			{#<label for="telefon">Telefon:</label>#}
+			{#<input type="text" id="telefon" name="_telefon" />#}
+		{#</div>#}
+
 		<input type="hidden" name="_target_path" value="/personal/index">
 		<input type="submit" name="login" />
 	</form>
