@@ -30,6 +30,7 @@ AppBundle\Entity\User:
         phone:
             type: integer
             nullable: false
+            unique: true
         isActive:
             type: boolean
             column: is_active

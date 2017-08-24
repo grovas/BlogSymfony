@@ -42,23 +42,23 @@ personal_index:
     path: /personal/index
     defaults: { _controller: AppBundle:Personal:index }
 
-post_newpost_index:
+post_new_index:
     path: /post/new
     defaults: { _controller: AppBundle:PostController\NewPost:index }
 
-post_editpost_index:
+post_edit_index:
     path: /post/edit/{id}
     defaults: { _controller: AppBundle:PostController\EditPost:index }
     requirements:
         id: '\d+'
 
-post_viewpost_index:
+post_view_index:
     path: /post/view/{id}
     defaults: { _controller: AppBundle:PostController\ViewPost:index }
     requirements:
         id: '\d+'
 
-post_deletepost_index:
+post_delete_index:
     path: /post/delete/{id}
     defaults: { _controller: AppBundle:PostController\DeletePost:index }
     requirements:
@@ -66,3 +66,9 @@ post_deletepost_index:
 
 logout:
     path: /logout
+
+admin_panel:
+    path: /admin/panel/{id}
+    defaults: { _controller: AppBundle:AdminPanel:index }
+    requirements:
+            id: '\d+'

@@ -27,20 +27,6 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
 			->getOneOrNullResult();
 	}
 
-//	/**
-//	 * @param int $phone
-//	 * @return phone number|null
-//	 */
-//	public function loadUserByPhone($phone)
-//	{
-//		return $this->createQueryBuilder('p')
-//			->select('p.username')
-//			->where('p.phone = :phone')
-//			->setParameter('phone', $phone)
-//			->getQuery()
-//			->getOneOrNullResult();
-//	}
-
 	/**
 	 *
 	 * @param $userId

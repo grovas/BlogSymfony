@@ -5,7 +5,6 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Post;
-use Symfony\Component\HttpFoundation\Response;
 
 class PersonalController extends Controller
 {
@@ -57,10 +56,15 @@ class PersonalController extends Controller
 				->getResult();
 		}
 
+		$emUsers = $this->getDoctrine()
+			->getRepository(User::class)
+			->findAll();
+
         return $this->render('personal/index.html.twig',
 			array('user' => $user,
 				  'posts' => $posts,
-				'notToday' => $notToday,
+				  'notToday' => $notToday,
+				  'users' =>$emUsers,
 				 ));
     }
 }
