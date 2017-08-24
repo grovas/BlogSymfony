@@ -23,6 +23,21 @@ class AdminPanelController extends Controller
 			);
 		}
 
-        return $this->render('/admin/panel.html.twig', array('userById' => $em));
+        return $this->render('admin/userview.html.twig',
+			array('u' => $em));
     }
+
+    public function viewAction ()
+	{
+		$this->denyAccessUnlessGranted(
+			'ROLE_ADMIN', null,
+			'Nie masz dostępu do tej strony!');
+
+		$em=$this->getDoctrine()
+			->getRepository(User::class)
+			->findAll();
+
+		return $this->render('/admin/panel.html.twig',
+			array('users' => $em));
+	}
 }

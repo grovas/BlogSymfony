@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<a href="{{ path('adminpanel_view') }}">Powrót</a>
+	{% if is_granted('ROLE_ADMIN') %}
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>
+					<th>Id</th>
+					</td>
+					<td>
+					<th>Nazwa użytkownika </th>
+					</td>
+					<td>
+					<th>Numer telefonu </th>
+					</td>
+					<td>
+					<th>Email użytkownika </th>
+					</td>
+					<td>
+					<th>Potwierdzenie emaila</th>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<th>{{ u.id }}</th>
+					</td>
+					<td>
+					<th>{{  u.username }}</th>
+					</td>
+					<td>
+					<th>{{ u.phone }}</th>
+					</td>
+					<td>
+					<th>{{ u.email }}</th>
+					</td>
+					<td>
+					<th>
+						{% if  u.isActive == true %}
+							Tak
+						{% else %}
+							Nie
+						{% endif %}
+					</th>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	{% endif %}
+
+
+{% endblock %}

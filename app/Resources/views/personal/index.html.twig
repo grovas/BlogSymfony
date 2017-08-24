@@ -2,28 +2,12 @@
 
 {% block body %}
 	{{ dump(app.user.roles) }}
-	{% if is_granted('ROLE_ADMIN') %}
-		<h1>hello {{ user.username }}</h1>
-		<table class="table">
-			<tbody>
-			<tr>
-				<th>Nazwa użytkownika </th>
-			</tr>
-			{% for u in users %}
-				<tr>
-					<td>
-						<a href="{{ path('admin_panel', {'id': u.id}) }}">
-							{{ u.username }}
-						</a>
-					</td>
-				</tr>
-			{% endfor %}
-			</tbody>
-		</table>
-	{% endif %}
 
 	{% if notToday == false %}
 		<a href="{{ path('post_new_index') }}">Nowy wpis</a><br/>
+	{% endif %}
+	{% if is_granted('ROLE_ADMIN') %}
+		<a href="{{ path('adminpanel_view') }}">Panel admina</a><br/>
 	{% endif %}
 
 	<a href="{{ path('user_edit') }}">Edycja danych blogera</a><br/>
@@ -52,12 +36,12 @@
 						</a>
 					</td>
 					<td>
+						<a href="{{ path('post_view_index', {'id': post.id}) }}">
 						{{ post.body }}
 					</td>
 					<td>
 						<a href="{{ asset('uploads/attachments/' ~ post.attachment) }}">
 							{{ post.attaOriginName }}</a>
-						<a href="">Usuń załącznik</a>
 					</td>>
 					<td>
 						{{ user.getUsername }}

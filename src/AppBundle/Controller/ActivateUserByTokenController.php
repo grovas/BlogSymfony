@@ -12,13 +12,13 @@ class ActivateUserByTokenController extends Controller
     public function checkTokenAction($token, LoggerInterface $log)
     {
 		$em = $this->getDoctrine()->getManager();
-		$user = $em->getRepository(User::class)->findOneByToken($token);
+		$user = $em->getRepository(User::class)
+			->findOneByToken($token);
 
 		$log->debug('user-debug', array($user));
 
 		if ($user){
 			$user->setIsActive(true);
-			//$em->persist($user);
 			$em->flush();
 			return $this->render('user/success.html.twig', array());
 		}
