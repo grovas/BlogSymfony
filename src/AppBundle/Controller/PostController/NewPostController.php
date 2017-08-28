@@ -17,14 +17,20 @@ class NewPostController extends Controller
 
 		if ($form->isSubmitted() && $form->isValid()) {
 			$post = $form->getData();
-			$file = $post->getAttachment();
-			$post->setAttaOriginName($file->getClientOriginalName());
-			$filename = md5(uniqid()).'.'.$file->guessExtension();
-			$file->move(
-				$this->getParameter('attachment_directory'),
-				$filename
-			);
-			$post->setAttachment($filename);
+			/**
+			 * Attachment is not required, if not pass by user
+			 * we don't persist them to the DB
+			 */
+			if ($post->getAttachment()) {
+				$file = $post->getAttachment();
+				$post->setAttaOriginName($file->getClientOriginalName());
+				$filename = md5(uniqid()) . '.' . $file->guessExtension();
+				$file->move(
+					$this->getParameter('attachment_directory'),
+					$filename
+				);
+				$post->setAttachment($filename);
+			}
 			$post->setUser($this->getUser());
 			$post->setDate(new \DateTime());
 			$em = $this->getDoctrine()->getManager();

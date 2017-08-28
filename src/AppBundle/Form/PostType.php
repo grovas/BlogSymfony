@@ -21,6 +21,7 @@ class PostType extends AbstractType
 				array('label' => 'Tutaj treść posta'))
 			->add('attachment',FileType::class,
 				array('label' => 'Dołącz plik do posta',
+					'required' => false,
 					));
 	}
 

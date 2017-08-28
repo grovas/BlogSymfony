@@ -27,7 +27,7 @@ login:
     defaults: { _controller: AppBundle:Security:login }
 
 activeuser_checktoken:
-    path: /register/activate={token}
+    path: /register/activate={token}phpu
     defaults: { _controller: AppBundle:ActivateUser:checkToken }
     methods: GET
 

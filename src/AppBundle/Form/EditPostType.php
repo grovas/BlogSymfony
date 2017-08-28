@@ -22,6 +22,7 @@ class EditPostType extends AbstractType
 			->add('attachment',FileType::class,
 				array('label' => 'Dołącz plik do posta',
 					'data_class' => null,
+					'required' => false
 				));
 	}
 

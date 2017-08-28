@@ -27,24 +27,24 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
 			->getOneOrNullResult();
 	}
 
-	/**
-	 *
-	 * @param $userId
-	 * @return null
-	 */
-	public function findOneByIdJoinedToPost($userId)
-	{
-		$query = $this->getEntityManager()
-			->createQuery(
-				'SELECT u, p FROM AppBundle:User u
-				JOIN u.posts p
-				WHERE u.id = :id'
-			)->setParameter('id', $userId);
-
-		try {
-			return $query->getSingleResult();
-		} catch (NoResultException $e) {
-			return null;
-		}
-	}
+//	/**
+//	 *
+//	 * @param $userId
+//	 * @return null
+//	 */
+//	public function findOneByIdJoinedToPost($userId)
+//	{
+//		$query = $this->getEntityManager()
+//			->createQuery(
+//				'SELECT u, p FROM AppBundle:User u
+//				JOIN u.posts p
+//				WHERE u.id = :id'
+//			)->setParameter('id', $userId);
+//
+//		try {
+//			return $query->getSingleResult();
+//		} catch (NoResultException $e) {
+//			return null;
+//		}
+//	}
 }

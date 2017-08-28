@@ -3,10 +3,18 @@
 namespace AppBundle\Controller\PostController;
 
 use AppBundle\Entity\Post;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DeletePostController extends Controller
 {
+	private $objectManager;
+
+	public function __construct(ObjectManager $objectManager)
+	{
+		$this->objectManager = $objectManager;
+	}
+
     public function indexAction($id)
     {
 		$em = $this->getDoctrine()->getManager();

@@ -70,9 +70,4 @@ class RegistrationController extends Controller
 			array('form' => $form->createView())
 		);
     }
-
-//    public function activateAction()
-//	{
-//
-//	}
 }
