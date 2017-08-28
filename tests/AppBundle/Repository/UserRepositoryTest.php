@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: arczi
- * Date: 8/27/17
- * Time: 10:57 PM
- */
 
 namespace AppBundle\Repository;
 
@@ -30,14 +24,16 @@ class UserRepositoryTest extends KernelTestCase
 			->getManager();
 	}
 
-	public function testSearchByIdJoinedToPost()
+	public function testSearchUserByUsername()
 	{
 		$user = $this->em
 			->getRepository(User::class)
 			->loadUserByUsername('admin');
 
-		var_dump($user->getId());
+		var_dump($user->getRoles());
 		$this->assertEquals(9, $user->getId());
+		$this->assertEquals('admin@admin.on', $user->getEmail());
+		$this->assertEquals("ROLE_ADMIN", $user->getRoles());
 	}
 
 	/**
