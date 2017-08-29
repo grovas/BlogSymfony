@@ -1,17 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	{{ dump(app.user.roles) }}
-
 	{% if notToday == false %}
 		<a href="{{ path('post_new_index') }}">Nowy wpis</a><br/>
 	{% endif %}
-	{% if is_granted('ROLE_ADMIN') %}
-		<a href="{{ path('adminpanel_view') }}">Panel admina</a><br/>
-	{% endif %}
-
-	<a href="{{ path('user_edit') }}">Edycja danych blogera</a><br/>
-	<a href="{{ path('logout') }}">Wyloguj</a><br/>
 	<table class="table">
 		<tbody>
 			<tr>

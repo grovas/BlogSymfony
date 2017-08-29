@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Blogownik!{% endblock %}</title>
         {% block stylesheets %}
             <!-- Latest compiled and minified CSS -->
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -12,11 +12,41 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block menu %}
+            <nav class="navbar navbar-expand-lg navbar-light"
+                 style="background-color: #e3f2fd;">
+                <a class="navbar-brand" href="#">Blogownik</a>
+                <div class="collapse navbar-collapse"
+					 id="navbarSupportedContent">
+                    {{ knp_menu_render('AppBundle:Builder:mainMenu',
+                    {'currentClass': 'active'}) }}
+                </div>
+            </nav>
+        {% endblock %}
+        {% block submenu %}
+			<nav class="navbar navbar-expand-lg navbar-light"
+				 style="background-color: #a3f2f1;">
+				{#<a class="navbar-brand" href="#">Blogownik</a>#}
+				<div class="collapse navbar-collapse"
+					 id="navbarSupportedContent">
+					{{ knp_menu_render('AppBundle:Builder:subMenu',
+					{'currentClass': 'active'}) }}
+				</div>
+			</nav>
+		{% endblock %}
+		<div class="container" style="height: 100%">
+        {% block body %}
+		{% endblock %}
+		</div>
         {% block javascripts %}
             <!-- Latest compiled and minified JavaScript -->
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         {% endblock %}
     </body>
+	{% block footer %}
+		<footer class="footer navbar-fixed-bottom">
+			&copy; Copyright 2017 by Artur Rózgowski.
+		</footer>
+	{% endblock %}
 </html>
 

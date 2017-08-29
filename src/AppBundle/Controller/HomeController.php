@@ -13,7 +13,7 @@ class HomeController extends Controller
     	$em = $this->getDoctrine()
 			->getManager()
 			->getRepository(User::class)
-			->loadUserByUsername('admin');
+			->loadUserByUsername('111222333');
 
     	if (!$em) {
     		$userAdmin = new User();

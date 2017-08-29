@@ -15,8 +15,6 @@ class ActivateUserByTokenController extends Controller
 		$user = $em->getRepository(User::class)
 			->findOneByToken($token);
 
-		$log->debug('user-debug', array($user));
-
 		if ($user){
 			$user->setIsActive(true);
 			$em->flush();

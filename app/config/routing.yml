@@ -6,9 +6,9 @@ home_index:
     path: /
     defaults: { _controller: AppBundle:Home:index }
 
-default_admin:
-    path: /admin
-    defaults: { _controller: AppBundle:Default:admin }
+#default_admin:
+#    path: /admin
+#    defaults: { _controller: AppBundle:Default:admin }
 
 user_success:
     path: /user/success

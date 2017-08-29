@@ -3,7 +3,6 @@
 namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\NoResultException;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -21,30 +20,11 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
 	public function loadUserByUsername($username)
 	{
 		return $this->createQueryBuilder('u')
-			->where('u.username = :username')
-			->setParameter('username', $username)
+			->where('u.phone = :phone')
+			//->where('u.username = :username OR u.phone = :phone')
+			//->setParameter('username', $username)
+			->setParameter('phone', $username)
 			->getQuery()
 			->getOneOrNullResult();
 	}
-
-//	/**
-//	 *
-//	 * @param $userId
-//	 * @return null
-//	 */
-//	public function findOneByIdJoinedToPost($userId)
-//	{
-//		$query = $this->getEntityManager()
-//			->createQuery(
-//				'SELECT u, p FROM AppBundle:User u
-//				JOIN u.posts p
-//				WHERE u.id = :id'
-//			)->setParameter('id', $userId);
-//
-//		try {
-//			return $query->getSingleResult();
-//		} catch (NoResultException $e) {
-//			return null;
-//		}
-//	}
 }

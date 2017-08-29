@@ -6,7 +6,7 @@ security:
         db_users:
             entity:
                 class: AppBundle:User
-                property: username
+                property: phone
 
     firewalls:
         dev:

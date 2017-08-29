@@ -1,10 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+	{% block submenu %} {% endblock %}
 	<h1>Witamy w serwisie dla blogerów</h1><br>
-	<h3>Jeśli nie masz konta zarejestruj się</h3>
-	<a href="{{ path('user_registration') }}">Do rejestracji</a>
-
-	<h3>Albo przejdź do logowania</h3>
-	<a href="{{ path('login') }}">Do logowania</a>
 {% endblock %}
