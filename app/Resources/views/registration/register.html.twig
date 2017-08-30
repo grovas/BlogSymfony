@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<div class="pull-right">
+	{#{% block menu %} {% endblock %}#}
+	{% block submenu %} {% endblock %}
+	<div class="pull-left">
 	{{ form_start(form) }}
 		{{ form_row(form.username, { attr: { class: 'form-control', placeholder: 'Nazwa użytkownika' } }) }}
 		{{ form_row(form.email, { attr: { class: 'form-control', placeholder: 'Email' } }) }}

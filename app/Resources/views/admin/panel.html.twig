@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<a href="{{ path('personal_index') }}">Powrót</a>
+	{% block menu %} {% endblock %}
 	{% if is_granted('ROLE_ADMIN') %}
-		<table class="table">
-			<tbody>
+		<table class="table table-striped">
+			<thead class="thead-default">
 				<tr>
 					<td>
 						<th>Lista użytkowników bloga</th>
 					</td>
 				</tr>
+			<tbody>
 				{% for u in users %}
 				<tr>
 					<td>
@@ -21,4 +22,7 @@
 			</tbody>
 		</table>
 	{% endif %}
+	<button type="button" class="btn btn-info">
+		<a href="{{ path('personal_index') }}">Powrót</a>
+	</button>
 {% endblock %}

@@ -1,9 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	{% if notToday == false %}
-		<a href="{{ path('post_new_index') }}">Nowy wpis</a><br/>
-	{% endif %}
+	{% block menu %} {% endblock %}
 	<table class="table">
 		<tbody>
 			<tr>
@@ -29,7 +27,8 @@
 					</td>
 					<td>
 						<a href="{{ path('post_view_index', {'id': post.id}) }}">
-							{{ post.body }}</a>
+							{{ post.body | length > 25 ? post.body|slice(0,25)~'...' : post.body }}
+						</a>
 					</td>
 					<td>
 						<a href="{{ asset('uploads/attachments/' ~ post.attachment) }}">

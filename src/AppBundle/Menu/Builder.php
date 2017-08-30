@@ -2,6 +2,7 @@
 
 namespace AppBundle\Menu;
 
+use AppBundle\Entity\Post;
 use Knp\Menu\FactoryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -17,20 +18,35 @@ class Builder extends Controller
 		return $menu;
 	}
 
-	public function subMenu(FactoryInterface $factory, array $options)
+	public function subMenu(FactoryInterface $factory,
+							array $options)
 	{
 		$user = $this->getUser();
+		$today = new \DateTime();
+		$todayFormat = $today->format('Y-m-d');
 
+		$repository = $this->getDoctrine()
+			->getRepository(Post::class);
 
+		$query = $repository->createQueryBuilder('t')
+			->where('t.date = :date')
+			->andWhere('t.user = :user')
+			->setParameter('date', $todayFormat)
+			->setParameter('user', $user->getId())
+			->getQuery();
 
-		dump($user->getRoles());
 		$menu = $factory->createItem('child');
 		$menu->setChildrenAttribute('class', 'nav navbar-nav');
-		$menu->addChild('Nowy wpis', ['route' => 'post_new_index']);
-		if ($user->getRoles()[0] == "ROLE_ADMIN") {
-			$menu->addChild('Panel admina', ['route' => 'adminpanel_view']);
+		if (!$query->getResult()) {
+			$menu->addChild('Nowy wpis',
+				['route' => 'post_new_index']);
 		}
-		$menu->addChild('Edycja danych blogera', ['route' => 'user_edit']);
+		if ($user->getRoles()[0] == "ROLE_ADMIN") {
+			$menu->addChild('Panel admina',
+				['route' => 'adminpanel_view']);
+		}
+		$menu->addChild('Edycja danych blogera',
+			['route' => 'user_edit']);
 		$menu->addChild('Wyloguj', ['route' => 'logout']);
 		return $menu;
 	}

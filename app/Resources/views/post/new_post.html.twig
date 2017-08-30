@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+	{% block menu %} {% endblock %}
 	<div class="pull-center">
 		{{ form_start(form) }}
 		{{ form_row(form.title,
@@ -11,6 +12,9 @@
 			{ attr: { class: 'form-control', placeholder: 'Dodaj załącznik' } }) }}
 		<br>
 		<button type="submit" class="btn btn-default">Dodaj wpis</button>
+		<button type="submit" class="btn btn-warning">
+			<a href="{{ path('personal_index') }}">Anuluj</a>
+		</button>
 		{{ form_end(form) }}
 	</div>
 {% endblock %}
