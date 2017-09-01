@@ -11,14 +11,13 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class EditPostController - class responsible for handle:
- * - Doctrine entity maanger,
- * - Create form to edit post,
+ * Class EditPostController - class responsible for handle Doctrine entity manager,
+ * create form to edit post,
  */
 class EditPostController extends Controller
 {
 	/** Function  responsible for injection of the Post Repository, create edit post form, persist object to DB
-	 * 
+	 *
 	 * @param Request $request
 	 * @param $id Post id
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse

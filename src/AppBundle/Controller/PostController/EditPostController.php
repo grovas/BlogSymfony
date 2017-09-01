@@ -11,13 +11,13 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class EditPostController - class responsible for handle:
- * - Doctrine entity maanger,
- * - Create form to edit post,
+ * Class EditPostController - responsible for handle Doctrine entity manager,
+ * create form to edit post.
  */
 class EditPostController extends Controller
 {
-	/** Function  responsible for injection of the Post Repository, create edit post form, persist object to DB
+	/**
+	 * Function responsible for injection of the Post Repository, create edit post form, persist object to DB
 	 *
 	 * @param Request $request
 	 * @param $id Post id
@@ -62,13 +62,9 @@ class EditPostController extends Controller
 				 * @var UploadedFile $file
 				 */
 				$file = $post->getAttachment();
-				/**
-				 * To save in DB original file name
-				 */
+				/** Store original file name on the property AttaOrigName */
 				$post->setAttaOriginName($file->getClientOriginalName());
-				/**
-				 * rename file name using md5 algorithm
-				 */
+				/** Rename file name using md5 algorithm */
 				$filename = md5(uniqid()) . '.' . $file->guessExtension();
 				/**
 				 * Move file to the directory set by @const attachment_directory
