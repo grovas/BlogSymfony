@@ -20,3 +20,4 @@ test.php
 src.zip
 /web/upload/attachments/*
 /Temp/*
+docs/api/phpdoc-cache-*

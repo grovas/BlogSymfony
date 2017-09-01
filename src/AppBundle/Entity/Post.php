@@ -120,11 +120,6 @@ class Post
 		$this->body = $body;
 	}
 
-//    /**
-//     * @var User
-//     */
-//    private $blog_users;
-
     /**
      * Get id
      *
@@ -167,10 +162,10 @@ class Post
 	}
 
 	/**
-	 * @param $attachment
+	 * @param string $attachment
 	 * @return $this
 	 */
-	public function setAttachment($attachment)
+	public function setAttachment(string $attachment)
 	{
 		$this->attachment = $attachment;
 		return $this;

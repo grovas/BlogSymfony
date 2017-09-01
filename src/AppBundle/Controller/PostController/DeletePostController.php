@@ -1,13 +1,5 @@
 <?php
-/**
- * Controller responsible for remove post entity from database.
- */
 
-/**
- * With this controller program remove post entity
- * based on given $id post.
- *
- */
 namespace AppBundle\Controller\PostController;
 
 use AppBundle\Entity\Post;
@@ -16,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Class DeletePostController - the only one class in this file
- * @package AppBundle\Controller\PostController
  */
 class DeletePostController extends Controller
 {
@@ -65,9 +56,9 @@ class DeletePostController extends Controller
 				'Nie zanlezione posta o id='.$id
 			);
 		}
-		/** tell to Doctrine thet we want remove post by given id */
+		/** Tell Doctrine that we want remove post by given id */
 		$em->remove($post);
-		/** execute query */
+		/** Execute query */
 		$em->flush();
 
 		/**
