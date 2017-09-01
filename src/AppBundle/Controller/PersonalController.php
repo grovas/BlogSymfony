@@ -18,29 +18,6 @@ class PersonalController extends Controller
 		$user = $this->getUser();
     	$userId = $user->getId();
 
-		$today = new \DateTime();
-		$todayFormat = $today->format('Y-m-d');
-
-		dump($today);
-		dump($todayFormat);
-
-		$repository = $this->getDoctrine()
-			->getRepository(Post::class);
-
-		$query = $repository->createQueryBuilder('t')
-			->where('t.date = :date')
-			->andWhere('t.user = :user')
-			->setParameter('date', $todayFormat)
-			->setParameter('user', $userId)
-			->getQuery();
-
-		dump($query->getResult());
-		$notToday = false;
-
-		if ($query->getResult()) {
-			$notToday = true;
-		}
-
 		if (!empty($user)) {
 			$user = $this->getDoctrine()
 				->getRepository(User::class)
@@ -63,7 +40,6 @@ class PersonalController extends Controller
         return $this->render('personal/index.html.twig',
 			array('user' => $user,
 				  'posts' => $posts,
-				  'notToday' => $notToday,
 				  'users' =>$emUsers,
 				 ));
     }

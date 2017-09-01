@@ -21,8 +21,6 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
 	{
 		return $this->createQueryBuilder('u')
 			->where('u.phone = :phone')
-			//->where('u.username = :username OR u.phone = :phone')
-			//->setParameter('username', $username)
 			->setParameter('phone', $username)
 			->getQuery()
 			->getOneOrNullResult();

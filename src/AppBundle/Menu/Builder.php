@@ -21,6 +21,9 @@ class Builder extends Controller
 	public function subMenu(FactoryInterface $factory,
 							array $options)
 	{
+		/**
+		 * Checking if today post is present
+		 */
 		$user = $this->getUser();
 		$today = new \DateTime();
 		$todayFormat = $today->format('Y-m-d');
@@ -37,10 +40,14 @@ class Builder extends Controller
 
 		$menu = $factory->createItem('child');
 		$menu->setChildrenAttribute('class', 'nav navbar-nav');
+
 		if (!$query->getResult()) {
 			$menu->addChild('Nowy wpis',
 				['route' => 'post_new_index']);
 		}
+		/**
+		 * Checking if user has admin privileges
+		 */
 		if ($user->getRoles()[0] == "ROLE_ADMIN") {
 			$menu->addChild('Panel admina',
 				['route' => 'adminpanel_view']);
