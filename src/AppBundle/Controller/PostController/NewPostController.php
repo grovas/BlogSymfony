@@ -20,25 +20,26 @@ class NewPostController extends Controller
 	 * @param Request $request
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
 	 */
-    public function indexAction(Request $request)
-    {
-    	/** @var Post $post */
-    	$post = new Post();
-    	/** @var Form $form */
-    	$form = $this->createForm(PostType::class, $post);
+	public function indexAction(Request $request)
+	{
+		/** @var Post $post */
+		$post = new Post();
+		/** @var Form $form */
+		$form = $this->createForm(PostType::class, $post);
 		$form->handleRequest($request);
 
 		/** Check if form is submitted and valid */
 		if ($form->isSubmitted() && $form->isValid()) {
-			/** recieve data from the form */
+			/** receive data from the form */
 			$post = $form->getData();
 			/**
 			 * Attachment is not required, if not pass by user
 			 * we don't persist them to the DB
 			 */
-			if ($post->getAttachment()) {
+			if ($post->getAttachment() ) {
 				/** @var UploadedFile $file */
 				$file = $post->getAttachment();
+				//dump($file);
 				/** Store original file name on the property AttaOrigName */
 				$post->setAttaOriginName($file->getClientOriginalName());
 				/** Rename file name using md5 algorithm */
@@ -60,7 +61,7 @@ class NewPostController extends Controller
 			$em->flush();
 			return $this->redirectToRoute('personal_index');
 		}
-        return $this->render('post/new_post.html.twig',
+		return $this->render('post/new_post.html.twig',
 			array('form' => $form->createView()));
-    }
+	}
 }

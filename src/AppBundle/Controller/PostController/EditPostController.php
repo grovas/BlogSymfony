@@ -52,6 +52,7 @@ class EditPostController extends Controller
 		 * Check if form is submitted with the valid data
 		 */
 		if ($form->isSubmitted() && $form->isValid()) {
+			/** receive data from the form */
 			$post = $form->getData();
 			/**
 			 * Attachment is not required, if not pass by user
@@ -88,7 +89,6 @@ class EditPostController extends Controller
 			}
 			/** After edit post change post date to the new date */
 			$post->setDate(new \DateTime());
-
 			/** @var ObjectManager $em */
 			$em = $this->getDoctrine()->getManager();
 			/** Tell Doctrine that we want save post by given id */

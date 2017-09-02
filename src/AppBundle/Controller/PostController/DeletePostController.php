@@ -38,7 +38,7 @@ class DeletePostController extends Controller
     public function indexAction($id)
     {
 		/**
-		 * Get access to the repository object and query for one Post
+         * Get access to the repository object and query for one Post
 		 */
 		$em = $this->getDoctrine()->getManager();
 		$post = $em->getRepository(Post::class)

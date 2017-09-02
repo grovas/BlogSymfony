@@ -18,7 +18,6 @@ class ViewPostController extends Controller
 				'Nie zanlezione posta o podanym id='.$id
 			);
 		}
-
         return $this->render('post/view_post.html.twig', array('post' => $post));
     }
 }

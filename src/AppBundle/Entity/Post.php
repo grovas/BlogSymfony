@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use DateTime;
+use Symfony\Component\HttpFoundation\File\File;
 
 class Post
 {
@@ -105,6 +106,8 @@ class Post
 	}
 
 	/**
+	 * Get text
+	 *
 	 * @return string
 	 */
 	public function getText(): string
@@ -113,6 +116,8 @@ class Post
 	}
 
 	/**
+	 * Set text
+	 *
 	 * @param string $body
 	 */
 	public function setText(string $body)
@@ -135,7 +140,7 @@ class Post
      *
      * @param string $body
      *
-     * @return Post
+     * @return string
      */
     public function setBody($body)
     {
@@ -154,6 +159,8 @@ class Post
     }
 
 	/**
+	 * Get attachment
+	 *
 	 * @return string
 	 */
 	public function getAttachment()
@@ -165,7 +172,7 @@ class Post
 	 * @param string $attachment
 	 * @return $this
 	 */
-	public function setAttachment(string $attachment)
+	public function setAttachment($attachment)
 	{
 		$this->attachment = $attachment;
 		return $this;
@@ -183,7 +190,7 @@ class Post
 	 * @param string $attaOriginName
 	 * @return $this
 	 */
-	public function setAttaOriginName(string $attaOriginName)
+	public function setAttaOriginName($attaOriginName)
 	{
 		$this->attaOriginName = $attaOriginName;
 		return $this;
